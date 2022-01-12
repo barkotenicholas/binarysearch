@@ -6,6 +6,44 @@ public class Treenode {
 
     private Treenode RightChild;
 
+    public Treenode(int value) {
+        this.data = value;
+    }
+
+    public Treenode get(int value){
+        if(value == data){
+            return this;
+        }
+        if(value < data){
+            if(leftChild != null){
+                return leftChild.get(value);
+            }
+        }
+        else {
+            if(RightChild != null){
+                return RightChild.get(value);
+            }
+        }
+        return null;
+    }
+
+    public int min(){
+        if(leftChild == null){
+            return data;
+        }
+        else {
+           return leftChild.min();
+        }
+
+    }
+    public int max(){
+        if(RightChild == null){
+            return data;
+        }
+        else {
+            return RightChild.max();
+        }
+    }
     public void insert(int value){
         if(data == value) return;
 
@@ -32,14 +70,12 @@ public class Treenode {
             leftChild.InorderTravasal();
         }
         System.out.print(data + ", ");
+
         if(RightChild != null){
             RightChild.InorderTravasal();
         }
 
-    }
 
-    public Treenode(int value) {
-        this.data = value;
     }
 
     public int getData() {
