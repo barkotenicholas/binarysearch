@@ -64,6 +64,10 @@ public class Tree {
             }else if(subtree.getRightChild() == null){
                 return subtree.getLeftChild();
             }
+
+            subtree.setData(subtree.getRightChild().min());
+
+            subtree.setRightChild(delete(subtree.getRightChild(), subtree.getData()));
         }
 
         return subtree;
